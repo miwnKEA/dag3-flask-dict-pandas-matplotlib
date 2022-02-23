@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bilforhandler</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>Salg af biler</h1>
+        <img src="{{ url_for('static', filename='cars_price.png') }}">
+        <img src="{{ url_for('static', filename='cars_bonus.png') }}">
+
+        <table id="data" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Mærke</th>
+                <th>Model</th>
+                <th>Farve</th>
+                <th>Til salg</th>
+                <th>Markedspris</th>
+                <th>Salgspris</th>
+                <th>Salgsbonus</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in cars %}
+                <tr>
+                  <td>{{ c.brand }}</td>
+                  <td>{{ c.model }}</td>
+                  <td>{{ c.color }}</td>
+                  <td>{{ c.onSale }}</td>
+                  <td>{{ c.marketPrice }}</td>
+                  <td>{{ c.sellingPrice }}</td>
+                  <td>{{ c.calculateSalesBonus() }}</td>
+                  <td><a href=""><button>Se bil</button></a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>
